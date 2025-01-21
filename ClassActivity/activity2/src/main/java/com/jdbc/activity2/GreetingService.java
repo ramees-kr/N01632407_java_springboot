@@ -2,7 +2,9 @@ package com.jdbc.activity2;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GreetingService {
     public String helloBeans() {
         return "Hello, Spring Beans!";
