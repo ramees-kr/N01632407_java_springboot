@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Edit Employee</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
 </head>
 <body>
+<h1>Edit Employee</h1>
 <form th:action="@{/employees/edit/{id}(id=${employee.emp_id})}" th:object="${employee}" method="post">
     <input type="hidden" th:field="*{emp_id}" />
     <label for="empid">Id:</label>
