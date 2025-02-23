@@ -2,21 +2,21 @@ package com.jdbc.activity2;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class GreetingService {
-    public String helloBeans() {
-        return "Hello, Spring Beans!";
-    }
-
     @PostConstruct
     public void init() {
-        System.out.println("GreetingService initialized");
+        System.out.println("Greetings Service initialized");
+    }
+
+    public void greeting(){
+        System.out.println("Hello, Spring Beans!");
     }
 
     @PreDestroy
     public void destroy() {
-        System.out.println("GreetingService destroyed");
+        System.out.println("Greetings Service destroyed");
     }
 }

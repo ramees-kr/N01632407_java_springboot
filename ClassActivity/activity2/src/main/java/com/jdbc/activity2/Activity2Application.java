@@ -7,9 +7,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootApplication
 public class Activity2Application {
 	public static void main(String[] args) {
+//        SpringApplication.run(Activity1Application.class, args);
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		GreetingService greetingService = context.getBean(GreetingService.class);
-		System.out.println(greetingService.helloBeans());
+		GreetingService greeter = context.getBean(GreetingService.class);
+		greeter.greeting();
 		context.close();
 	}
 }
