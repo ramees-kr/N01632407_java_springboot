@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 public class AppConfig {
 
     @Bean
-//    @Scope("prototype")
+    @Scope("prototype")
     public GreetingService greetingService(){
         return new GreetingService();
     }
