@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Employee</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+</head>
+<body>
+<h1>Edit Employee</h1>
+<form th:action="@{/employees/edit/{id}(id=${employee.emp_id})}" th:object="${employee}" method="post" novalidate>
+    <input type="hidden" th:field="*{emp_id}"/>
+
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" th:field="*{emp_firstname}" required/>
+    <span class="error-message" th:if="${#fields.hasErrors('emp_firstname')}" th:errors="*{emp_firstname}"></span><br/>
+
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" th:field="*{emp_lastname}" required/>
+    <span class="error-message" th:if="${#fields.hasErrors('emp_lastname')}" th:errors="*{emp_lastname}"></span><br/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{emp_email}" required/>
+    <span class="error-message" th:if="${#fields.hasErrors('emp_email')}" th:errors="*{emp_email}"></span><br/>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
