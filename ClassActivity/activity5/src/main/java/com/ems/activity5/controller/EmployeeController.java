@@ -26,13 +26,13 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        Employee employee = new Employee(0, "", "", "");
+        Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "emp-add-form";
     }
 
     @PostMapping("/add")
-    public String addEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, Model model) {
+    public String addEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult result) {
         if (result.hasErrors()) {
             return "emp-add-form";
         }
@@ -48,7 +48,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editEmployee(@PathVariable int id, @ModelAttribute("employee") @Valid Employee employee, BindingResult result, Model model) {
+    public String editEmployee(@PathVariable int id, @ModelAttribute("employee") @Valid Employee employee, BindingResult result) {
         if (result.hasErrors()) {
             return "emp-edit-form";
         }

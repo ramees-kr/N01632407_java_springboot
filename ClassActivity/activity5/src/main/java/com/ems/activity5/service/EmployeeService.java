@@ -1,42 +1,50 @@
 package com.ems.activity5.service;
-import java.util.ArrayList;
-import java.util.List;
+
 import com.ems.activity5.model.Employee;
+import com.ems.activity5.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmployeeService {
 
-    private final List<Employee> employeeList = new ArrayList<>();
+    private final EmployeeRepository employeeRepository;
 
-    public EmployeeService() {
-        employeeList.add(new Employee(1, "Ramees", "KR", "ramees.kr@admin.com"));
-        employeeList.add(new Employee(2, "Reshma", "Roohi", "reshma.roohi@admin.com"));
+    // Constructor injection for EmployeeRepository
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
+    // Get all employees
     public List<Employee> getAllEmployees() {
-        return employeeList;
+        return employeeRepository.findAll();
     }
 
+    // Get employee by id
     public Employee getEmployeeById(int id) {
-        return employeeList.stream()
-                .filter(employee -> employee.getEmp_id() == id)
-                .findFirst()
-                .orElse(null);
+        return employeeRepository.findById(id).orElse(null);
     }
 
+    // Add new employee
     public void addEmployee(Employee employee) {
-        employee.setEmp_id(employeeList.size() + 1);
-        employeeList.add(employee);
+        employeeRepository.save(employee);
     }
 
+    // Update employee details
     public void updateEmployee(int id, Employee updatedEmployee) {
-        employeeList.removeIf(employee -> employee.getEmp_id() == id);
-        updatedEmployee.setEmp_id(id);
-        employeeList.add(updatedEmployee);
+        // Retrieve the existing employee from the database
+        Employee existingEmployee = employeeRepository.findById(id).orElse(null);
+        if (existingEmployee != null) {
+            existingEmployee.setEmp_firstname(updatedEmployee.getEmp_firstname());
+            existingEmployee.setEmp_lastname(updatedEmployee.getEmp_lastname());
+            existingEmployee.setEmp_email(updatedEmployee.getEmp_email());
+            employeeRepository.save(existingEmployee);
+        }
     }
 
+    // Delete employee by id
     public void deleteEmployee(int id) {
-        employeeList.removeIf(employee -> employee.getEmp_id() == id);
+        employeeRepository.deleteById(id);
     }
 }

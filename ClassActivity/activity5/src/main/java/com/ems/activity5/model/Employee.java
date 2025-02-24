@@ -1,13 +1,18 @@
 package com.ems.activity5.model;
 
-import lombok.*;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
-@Getter
-@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "employees")
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int emp_id;
 
     @NotBlank(message = "First name should not be empty")
