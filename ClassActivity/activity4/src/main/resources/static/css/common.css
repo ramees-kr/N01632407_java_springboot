@@ -1,16 +1,42 @@
-/* common.css */
+/* Combined common.css */
 
+/* Reset body margins for header/footer consistency and set base typography */
 body {
-    font-family: sans-serif;
-    margin: 20px;
+    font-family: Arial, sans-serif;  /* Using Arial for a clean look */
+    margin: 0;
+    padding: 0;
     line-height: 1.6;
 }
 
+/* Container class for main content (optional) */
+.container {
+    margin: 20px;
+}
+
+/* Header styling */
+header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Footer styling */
+footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Headings */
 h1 {
     color: #333;
     margin-bottom: 15px;
 }
 
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -32,16 +58,18 @@ tr:nth-child(even) { /* Slightly darker background for even rows */
     background-color: #f9f9f9;
 }
 
+/* Link styling */
 a {
     color: #007bff; /* Blue link color */
     text-decoration: none;
-    margin-right: 10px; /* Spacing between links */
+    margin-right: 10px;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
+/* Form styling */
 form label {
     display: block; /* Labels on their own line */
     margin-bottom: 5px;
@@ -68,7 +96,16 @@ form button:hover {
     background-color: #0056b3;
 }
 
-.error { /* Style for error messages (if you add validation) */
+/* Error message styling */
+.error,
+.error-message {
     color: red;
     margin-top: 5px;
+}
+
+/* Optional inline label for forms (if needed) */
+label.inline {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
 }

@@ -1,4 +1,5 @@
 package com.ems.activity4.controller;
+
 import com.ems.activity4.model.Employee;
 import com.ems.activity4.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -6,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.constraints.*;
 
 @Controller
 @RequestMapping("/employees")
@@ -26,13 +26,16 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        Employee employee = new Employee(0,"","","");
+        Employee employee = new Employee(0, "", "", "");
         model.addAttribute("employee", employee);
         return "emp-add-form";
     }
 
     @PostMapping("/add")
-    public String addEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult result) {
+    public String addEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "emp-add-form";
+        }
         employeeService.addEmployee(employee);
         return "redirect:/employees";
     }
@@ -45,7 +48,10 @@ public class EmployeeController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editEmployee(@PathVariable int id, @ModelAttribute Employee employee) { // Add @PathVariable
+    public String editEmployee(@PathVariable int id, @ModelAttribute("employee") @Valid Employee employee, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "emp-edit-form";
+        }
         employeeService.updateEmployee(id, employee);
         return "redirect:/employees";
     }
