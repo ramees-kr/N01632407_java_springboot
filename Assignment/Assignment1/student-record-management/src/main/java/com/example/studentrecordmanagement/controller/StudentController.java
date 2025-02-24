@@ -1,4 +1,5 @@
 package com.example.studentrecordmanagement.controller;
+
 import com.example.studentrecordmanagement.entity.Student;
 import com.example.studentrecordmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    // GET /students -> Show student list
+    // GET /students -> Display all student records
     @GetMapping
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
@@ -27,22 +28,21 @@ public class StudentController {
         return "student_form";
     }
 
-    // POST /students -> Handle form submission to add a student
+    // POST /students -> Process form submission to add a student
     @PostMapping
     public String addStudent(@ModelAttribute("student") Student student) {
         studentService.addStudent(student);
-        return "redirect:/students";  // Redirect to the students list
+        return "redirect:/students";  // Redirect back to the list
     }
 
-    // Example: GET /students/{id} -> Retrieve a specific student by ID
+    // GET /students/{id} -> Optionally display details of a specific student
     @GetMapping("/{id}")
     public String getStudentById(@PathVariable String id, Model model) {
         Student student = studentService.getStudentById(id);
         if (student == null) {
-            // handle not found scenario
             return "error"; // or a custom error page
         }
         model.addAttribute("student", student);
-        return "student_detail"; // You can create a "student_detail.html" template for this
+        return "student_detail"; // Create student_detail.html if needed
     }
 }

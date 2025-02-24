@@ -1,6 +1,6 @@
 package com.example.studentrecordmanagement.service;
-import com.example.studentrecordmanagement.entity.Student;
 
+import com.example.studentrecordmanagement.entity.Student;
 import java.util.Collection;
 
 public interface StudentService {

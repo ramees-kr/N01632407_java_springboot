@@ -14,13 +14,12 @@ public class StudentServiceImpl implements StudentService {
 
     private Map<String, Student> studentMap = new HashMap<>();
 
-    // This method runs automatically after bean creation
     @PostConstruct
     public void init() {
         // Pre-populate with three records
-        Student s1 = new Student("S001", "Alice Johnson", 20, "Female", "alice@example.com", "New York", LocalDate.of(2003, 3, 15));
-        Student s2 = new Student("S002", "Bob Smith", 22, "Male", "bob@example.com", "Los Angeles", LocalDate.of(2001, 7, 20));
-        Student s3 = new Student("S003", "Charlie Brown", 21, "Male", "charlie@example.com", "Chicago", LocalDate.of(2002, 5, 10));
+        Student s1 = new Student("S001", "Ramees KR", 20, "Male", "test@example.com", "Toronto", LocalDate.of(2003, 3, 15));
+        Student s2 = new Student("S002", "John Honai", 22, "Male", "john@example.com", "Kochi", LocalDate.of(2001, 7, 20));
+        Student s3 = new Student("S003", "Reshma K", 21, "Female", "resh@example.com", "New York", LocalDate.of(2002, 5, 10));
 
         studentMap.put(s1.getId(), s1);
         studentMap.put(s2.getId(), s2);

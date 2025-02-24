@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Student Records</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
 <h1>Student Records</h1>
-<table border="1">
+<table>
     <thead>
     <tr>
         <th>ID</th>
@@ -29,7 +30,6 @@
     </tr>
     </tbody>
 </table>
-<br>
-<a th:href="@{/students/new}">Add New Student</a>
+<a th:href="@{/students/new}" class="button">Add New Student</a>
 </body>
 </html>

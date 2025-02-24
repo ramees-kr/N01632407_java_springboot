@@ -1,16 +1,15 @@
 package com.example.studentrecordmanagement.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter(AccessLevel.PUBLIC)
-@Setter(AccessLevel.PRIVATE)
 public class Student {
-
     private String id;
     private String name;
     private int age;
