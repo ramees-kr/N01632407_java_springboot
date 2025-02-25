@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Product</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+</head>
+<body>
+
+
+<h1>Add Product</h1>
+<form th:action="@{/products/add}" th:object="${product}" method="post" novalidate>
+    <input type="hidden" th:field="*{id}"/>
+
+    <label for="name">Product Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/>
+
+    <label for="description">Description</label>
+    <input type="text" id="description" th:field="*{description}" required/>
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" th:field="*{price}" required/>
+
+    <label for="stock">Price:</label>
+    <input type="text" id="stock" th:field="*{stock}" required/>
+
+    <button type="submit">Save</button>
+</form>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Company Name. All rights reserved.</p>
+</footer>
+</body>
+</html>
