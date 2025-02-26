@@ -23,7 +23,7 @@
         <td th:text="${product.price}"></td>
         <td th:text="${product.stock}"></td>
         <td>
-            <a th:href="@{/products/edit/{id}(id=${product.id})}">Edit</a>
+            <a th:href="@{/products/update/{id}(id=${product.id})}">Edit</a>
             <a th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
         </td>
     </tr>

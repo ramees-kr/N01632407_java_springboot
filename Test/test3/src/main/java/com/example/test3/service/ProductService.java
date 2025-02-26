@@ -31,10 +31,13 @@ public class ProductService {
         Product existingProduct = productRepository.findById(product.getId()).orElse(null);
         if (existingProduct != null) {
             existingProduct.setName(product.getName());
+            existingProduct.setDescription(product.getDescription());
             existingProduct.setPrice(product.getPrice());
+            existingProduct.setStock(product.getStock());
             productRepository.save(existingProduct);
         }
     }
+
 
     public void deleteProduct(int id) {
         productRepository.deleteById(id);
