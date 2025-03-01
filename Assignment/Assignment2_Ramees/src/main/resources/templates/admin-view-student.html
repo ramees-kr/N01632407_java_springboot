@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>View Student</h1>
+    <p>ID: <span th:text="${student.id}"></span></p>
+    <p>Username: <span th:text="${student.username}"></span></p>
+    <p>Name: <span th:text="${student.name}"></span></p>
+    <p>Email: <span th:text="${student.email}"></span></p>
+    <p>Address: <span th:text="${student.address}"></span></p>
+    <p>Date of Birth: <span th:text="${student.dob}"></span></p>
+    <p>Status: <span th:text="${student.status}"></span></p>
+    <h2>Enrolled Programs</h2>
+    <ul>
+        <li th:each="enrollment : ${enrollments}">
+            <span th:text="${enrollment.programCode}"></span>
+        </li>
+    </ul>
+    <a th:href="@{/admin/dashboard}">Back to Dashboard</a>
+</div>
+</body>
+</html>

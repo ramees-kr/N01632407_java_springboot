@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container" style="width: 70%">
+  <h1>Welcome, <span th:text="${student.name}">Student</span></h1>
+  <h2>Enrolled Programs</h2>
+  <ul>
+    <li th:each="program : ${programs}">
+
+      <span th:text="${program.programCode} + ' - ' + ${program.programName}"></span>
+
+    </li>
+  </ul>
+  <div th:if="${message == 'enrolled'}" class="success">Successfully enrolled in the program.</div>
+  <div class="links">
+    <a th:href="@{/enroll}">Enroll in a Program</a>
+    <a th:href="@{/update-info}">Update Info</a>
+    <a th:href="@{/logout}">Log Out</a>
+  </div>
+</div>
+</body>
+</html>

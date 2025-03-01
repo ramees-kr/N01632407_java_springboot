@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Enroll</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+  <h1>Enroll in a Program</h1>
+  <form th:action="@{/enroll}" method="post">
+    <input type="hidden" th:value="${studentId}" name="studentId">
+    <div class="form-group">
+      <label for="programCode">Select Program:</label>
+      <select id="programCode" name="programCode" required>
+        <option th:each="program : ${programs}" th:value="${program.programCode}" th:text="${program.programName}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit">Enroll</button>
+    </div>
+  </form>
+  <div th:if="${response == 'already-enrolled'}" class="error">You are already enrolled in this program.</div>
+</div>
+</body>
+</html>
