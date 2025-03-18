@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign Up - Java Beans & Bytes Coffee Shop</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <h2>User Sign Up</h2>
+    <form th:action="@{/register}" method="post">
+        <div>
+            <label for="userName">Username:</label>
+            <input type="text" id="userName" name="userName" required/>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required/>
+        </div>
+        <div>
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" required>
+            <label for="female">Female</label>
+        </div>
+        <div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required/>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <!-- Display an error message if one exists -->
+    <p th:if="${error}" class="error" th:text="${error}"></p>
+    <!-- Optionally display success message -->
+    <p th:if="${message}" th:text="${message}"></p>
+</div>
+</body>
+</html>
